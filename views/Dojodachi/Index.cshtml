@@ -1,0 +1,38 @@
+@using Microsoft.AspNetCore.Http
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dojodachi</title>
+</head>
+<body>
+    <div>
+        <p>Health: @Context.Session.GetInt32("Happiness") | Fullness: @Context.Session.GetInt32("Fullness") 
+            | Meals: @Context.Session.GetInt32("Meals") | Energy: @Context.Session.GetInt32("Energy")</p>
+        <div>
+            <img src="" alt="Mood pic">
+            <p>@Context.Session.GetString("Message")</p>
+        </div>
+        @if(Context.Session.GetInt32("GameState") > 0)
+        {
+            <div>
+                @if(Context.Session.GetInt32("Meals")>0)
+                {
+                    <a href="Dojodachi/feed"><Button>Feed</Button></a>
+                } else {
+                    <button disabled>Feed</button>
+                }
+                <a href="Dojodachi/play"><Button>Play</Button></a>
+                <a href="Dojodachi/work"><Button>Work</Button></a>
+                <a href="Dojodachi/sleep"><Button>Sleep</Button></a>
+            </div>
+        }
+        <div>
+                <a href="Dojodachi/restart"><Button>Restart</Button></a>
+        </div>
+        
+    </div>
+</body>
+</html>
